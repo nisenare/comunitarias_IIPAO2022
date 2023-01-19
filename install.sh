@@ -4,12 +4,11 @@
 
 # Instalar los requerimientos para que funcione el LoRaWAN:
 
-apt upgrade
+apt update && apt -y upgrade
 apt install -y python3-pip
 pip3 install --upgrade setuptools
 pip3 install --upgrade adafruit-python-shell
 pip3 install adafruit-circuitpython-rfm9x
-apt -y update
 
 
 # Anadir la linea dtoverlay=gpio-shutdown en /boot/config.txt para
