@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#Este script va en el Raspberry Pi
+# Este script va en el Raspberry Pi.
+# Ejecutar como superuser, por favor.
 
 # Instalar los requerimientos para que funcione el LoRaWAN:
 
@@ -17,6 +18,7 @@ pip3 install adafruit-circuitpython-rfm9x
 CONF_DIR=/boot/config.txt
 sed -i 's/disable_overscan=1/& \ndtoverlay=gpio-shutdown/' $CONF_DIR
 sed -i 's/dtparam=spi=off/dtparam=spi=on/g' $CONF_DIR
+sed -i 's/#dtparam=spi=on/dtparam=spi=on/g' $CONF_DIR
 
 
 # Descargar el script de python y el servicio systemd e insertar los archivos necesarios en

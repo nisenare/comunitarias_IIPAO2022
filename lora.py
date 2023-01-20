@@ -68,7 +68,7 @@ def main():
     if (not textoReceived):
       continue
     sendToThingspeak(textoReceived, alternar)
-    saveToFile(ARCHIVO_DIR + "tabla" + date.today().strftime("%Y-%m-%d") + ".csv", "a", textoReceived)
+    saveToFile(ARCHIVO_DIR + "/tabla" + date.today().strftime("%Y-%m-%d") + ".csv", "a", textoReceived)
     print("[" + format(strftime("%Y-%m-%d %H:%M:%S")) + "] " +
     "Dato de " + alternar + ": " + textoReceived + " [SUCCESS]")
     if (alternar == "ARD-1"):
