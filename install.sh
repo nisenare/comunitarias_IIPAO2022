@@ -12,11 +12,11 @@ pip3 install adafruit-circuitpython-rfm9x
 
 
 # Anadir la linea dtoverlay=gpio-shutdown en /boot/config.txt para
-# habilitar el modo sleep:
+# habilitar el modo sleep. Tambien habilita la interfaz SPI:
 
 CONF_DIR=/boot/config.txt
-sed -i.bak 's/disable_overscan=1/& \ndtoverlay=gpio-shutdown/' $CONF_DIR
-rm $CONF_DIR.bak
+sed -i 's/disable_overscan=1/& \ndtoverlay=gpio-shutdown/' $CONF_DIR
+sed -i 's/dtparam=spi=off/dtparam=spi=on/g' $CONF_DIR
 
 
 # Descargar el script de python y el servicio systemd e insertar los archivos necesarios en
@@ -34,6 +34,9 @@ IFS=$OLD_IFS
 HOME_DIR="/home/$THIS_USR"
 WRK_DIR="$HOME_DIR/WaterComsumptionPaipayales"
 mkdir $WRK_DIR
+chown $THIS_USR lora.py
+chgrp $THIS_USR lora.py
+touch $WRK_DIR/log.txt
 mv lora.py $WRK_DIR
 
 
@@ -45,3 +48,4 @@ mv lora.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable lora.service
 systemctl start lora.service
+reboot now
