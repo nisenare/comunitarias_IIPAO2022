@@ -39,6 +39,8 @@ mkdir $WRK_DIR
 chown $THIS_USR lora.py
 chgrp $THIS_USR lora.py
 touch $WRK_DIR/log.txt
+chown $THIS_USR $WRK_DIR/log.txt
+chgrp $THIS_USR $WRK_DIR/log.txt
 mv lora.py $WRK_DIR
 
 
