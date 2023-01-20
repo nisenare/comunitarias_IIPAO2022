@@ -41,7 +41,7 @@ mv lora.py $WRK_DIR
 
 
 # Setear el servicio para que el script se ejecute automaticamente
-# y se reinicie si hay errores de red:
+# y se reinicie si hay errores de red. Rebootea el sistema luego de esto:
 
 sed -i "s/pi/$THIS_USR/g" ./lora.service
 mv lora.service /etc/systemd/system/
